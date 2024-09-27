@@ -10,7 +10,8 @@ npm-debug.*
 *.orig.*
 web-build/
 
-modules/color-picker/android/build/
+## android build artifacts
+modules/color-picker/android/build/*
 
 # macOS
 .DS_Store
