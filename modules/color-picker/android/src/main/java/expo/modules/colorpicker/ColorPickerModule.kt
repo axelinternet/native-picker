@@ -20,6 +20,9 @@ class ColorPickerModule : Module() {
       Prop("name") { _: ColorPickerView, prop: String ->
         println(prop)
       }
+
+      Events("onUpdate")
     }
+
   }
 }
