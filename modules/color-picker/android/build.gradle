@@ -41,7 +41,19 @@ android {
     abortOnError false
   }
 
+  buildFeatures {
+    compose true
+  }
+
+  composeOptions {
+    kotlinCompilerExtensionVersion "1.5.10"
+  }
+
   dependencies {
-    implementation("com.github.Dhaval2404:ColorPicker:2.3")
+    implementation("com.github.skydoves:colorpicker-compose:1.1.2")
+    // Importing Jetpack Compose
+    implementation(platform("androidx.compose:compose-bom:2024.09.02"))
+    // and ui library
+    implementation("androidx.compose.material3:material3")
   }
 }
