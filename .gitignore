@@ -13,6 +13,10 @@ web-build/
 ## android build artifactsgit 
 modules/color-picker/android/build/*
 
+## ios build artifacts
+ios/build/
+modules/color-picker/ios/build/
+
 # macOS
 .DS_Store
 
