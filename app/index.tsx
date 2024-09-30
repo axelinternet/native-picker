@@ -14,8 +14,10 @@ export default function Index() {
     >
       <ColorPickerView
         name="nisse"
-        style={{ width: "100%", flex: 1 }}
-        onUpdate={(e) => setBackgroundColor(`#${e.nativeEvent.color}`)}
+        style={{ width: "100%", height: 400 }}
+        onUpdate={(e) => {
+          setBackgroundColor(`#${e.nativeEvent.color}`);
+        }}
       />
     </View>
   );

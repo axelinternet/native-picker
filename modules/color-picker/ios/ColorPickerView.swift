@@ -1,7 +1,36 @@
 import ExpoModulesCore
+import SwiftUI
+import UIKit
 
-// This view will be used as a native component. Make sure to inherit from `ExpoView`
-// to apply the proper styling (e.g. border radius and shadows).
+
 class ColorPickerView: ExpoView {
-  
+    private let contentView: UIHostingController<Toggles>
+    
+    let onUpdate: EventDispatcher
+    
+    required init(appContext: AppContext? = nil) {
+        onUpdate = EventDispatcher()
+        
+        var handleUpdate: ((String) -> Void)?
+        
+        contentView = UIHostingController(rootView: Toggles(
+            onUpdate: { color in
+                handleUpdate?(color)
+            }
+        ))
+        
+        super.init(appContext: appContext)
+        
+        handleUpdate = { color in
+            self.onUpdate(["color": color])
+        }
+        
+        // clipsToBounds = true
+        addSubview(contentView.view)
+    }
+    
+    override func layoutSubviews() {
+        contentView.view.frame = bounds
+    }
+    
 }
