@@ -1,6 +1,8 @@
 PODS:
   - boost (1.83.0)
+  - ChromaColorPicker (2.0.2)
   - ColorPicker (1.0.0):
+    - ChromaColorPicker (~> 2.0)
     - ExpoModulesCore
   - DoubleConversion (1.1.6)
   - EXConstants (16.0.2):
@@ -1593,6 +1595,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - ChromaColorPicker
     - SocketRocket
 
 EXTERNAL SOURCES:
@@ -1754,7 +1757,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   boost: d3f49c53809116a5d38da093a8aa78bf551aed09
-  ColorPicker: 67e72841c64366b24b78a2347f2ff7b80c14670c
+  ChromaColorPicker: 307585f2dc23d4d72f24cad320c1e08825cb5c09
+  ColorPicker: 949d9824c394f78801da4b5fa11257d0090f5641
   DoubleConversion: 76ab83afb40bddeeee456813d9c04f67f78771b5
   EXConstants: 409690fbfd5afea964e5e9d6c4eb2c2b59222c59
   EXJSONUtils: 30c17fd9cc364d722c0946a550dfbf1be92ef6a4

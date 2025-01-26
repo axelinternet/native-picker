@@ -2,7 +2,7 @@ import { View } from "react-native";
 import { ColorPickerView } from "../modules/color-picker";
 import { useState } from "react";
 export default function Index() {
-  const [backgroundColor, setBackgroundColor] = useState("#ff00ff");
+  const [backgroundColor, setBackgroundColor] = useState("#4d3e4d");
   return (
     <View
       style={{
@@ -14,9 +14,9 @@ export default function Index() {
     >
       <ColorPickerView
         name="nisse"
-        style={{ width: "100%", height: 400 }}
+        style={{ width: "95%", height: 375 }}
         onUpdate={(e) => {
-          setBackgroundColor(`#${e.nativeEvent.color}`);
+          setBackgroundColor(`${e.nativeEvent.color}`);
         }}
       />
     </View>

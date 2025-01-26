@@ -1,36 +1,45 @@
 import ExpoModulesCore
 import SwiftUI
 import UIKit
-
+import ChromaColorPicker
+func hexString(from color: UIColor) -> String {
+    guard let components = color.cgColor.components, components.count >= 3 else {
+        return "#000000"
+    }
+    let r = Float(components[0])
+    let g = Float(components[1])
+    let b = Float(components[2])
+    return String(format: "#%02lX%02lX%02lX", lroundf(r * 255), lroundf(g * 255), lroundf(b * 255))
+}
 
 class ColorPickerView: ExpoView {
-    private let contentView: UIHostingController<Toggles>
-    
-    let onUpdate: EventDispatcher
+    let colorPicker = ChromaColorPicker()
+    let onUpdate = EventDispatcher()
+    private var homeHandle: ChromaColorHandle!
     
     required init(appContext: AppContext? = nil) {
-        onUpdate = EventDispatcher()
         
-        var handleUpdate: ((String) -> Void)?
         
-        contentView = UIHostingController(rootView: Toggles(
-            onUpdate: { color in
-                handleUpdate?(color)
-            }
-        ))
-        
+        //clipsToBounds = true // ?
+        homeHandle = ChromaColorHandle(color: .orange)
+        colorPicker
+            .addHandle(homeHandle)
+    
         super.init(appContext: appContext)
-        
-        handleUpdate = { color in
-            self.onUpdate(["color": color])
-        }
-        
-        // clipsToBounds = true
-        addSubview(contentView.view)
+        colorPicker.delegate = self
+        addSubview(colorPicker)
     }
     
     override func layoutSubviews() {
-        contentView.view.frame = bounds
+      colorPicker.frame = bounds
     }
     
+}
+
+extension ColorPickerView: ChromaColorPickerDelegate {
+    
+    func colorPickerHandleDidChange(_ colorPicker: ChromaColorPicker, handle: ChromaColorHandle, to color: UIColor) {
+        colorPicker.backgroundColor = color
+        onUpdate(["color": hexString(from: color)])
+    }
 }
